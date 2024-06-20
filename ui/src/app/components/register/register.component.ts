@@ -75,7 +75,7 @@ export class RegisterComponent {
     const isValidEmail = emailRegex.test(this.form.value.email as string);
     const isValidPhone = phoneRegex.test(this.form.value.mobile);
 
-    if (!isValidEmail && !isValidPhone) {
+    if (!isValidEmail || !isValidPhone) {
       this.commonService.toastErrorMessage("ایمیل یا شماره تلفن وارد شده صحیح نمیباشد", 'error');
       return false;
     }

@@ -2573,11 +2573,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\API\\API.csproj",
+      "projectPath": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\API\\API.csproj",
       "packagesPath": "C:\\Users\\jalal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\API\\obj\\",
+      "outputPath": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2598,8 +2598,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\DAL\\DAL.csproj"
+            "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\DAL\\DAL.csproj"
             }
           }
         }

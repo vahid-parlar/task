@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LIziMc8M+opdt3OMPHzTjsutl0rCt8LAEoOK8oJhHHiDMHW0Ulj/Q8h0civXUiRlY/WITg3yICFSD3uWZ/LX6w==",
+  "dgSpecHash": "UzsewyxwCr42J2Bvvy1dg0taCal6kRey5e0PHXX70uYbIsa0AtgsWvFQIUCLdNU7LR+1eL8bk6Dv0HLzQV6PRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jalal\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\jalal\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.29\\microsoft.aspnetcore.authentication.jwtbearer.6.0.29.nupkg.sha512",

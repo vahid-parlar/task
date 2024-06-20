@@ -2024,11 +2024,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\DAL\\DAL.csproj",
+      "projectPath": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\jalal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jalal\\Desktop\\vahid\\TaskManager\\DAL\\obj\\",
+      "outputPath": "C:\\Users\\jalal\\Desktop\\New folder\\task\\TaskManager\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

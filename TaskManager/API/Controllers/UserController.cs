@@ -23,7 +23,7 @@ namespace API.Controllers
 
             if (status==1)
             {
-                return Ok(message);
+                return Ok();
             }else 
             {
                 return BadRequest(message);
@@ -31,17 +31,17 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<LoginResult> Login(LoginModel model)
         {
-            var (status, message) =await _authService.Login(model);
+            var res =await _authService.Login(model);
 
-            if (status==1)
-            {
-                return Ok(message);
-            }else 
-            {
-                return BadRequest(message);
-            }
+            //if (status==1)
+            //{
+                return res;
+            //}else 
+            //{
+            //    return BadRequest(res);
+            //}
         }
 
         [Authorize]

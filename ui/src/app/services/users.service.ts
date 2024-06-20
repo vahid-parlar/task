@@ -33,6 +33,6 @@ export class UserService {
     return this.http.post<LoginResult>(`${Utility.serverUrl}/login`,loginInput);
   }
   register(registerInput: RegisterInput) {
-    return this.http.post<LoginResult>(`${Utility.serverUrl}/register`,registerInput);
+    return this.http.post<any>(`${Utility.serverUrl}/register`,registerInput);
   }
 }

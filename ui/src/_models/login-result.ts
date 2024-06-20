@@ -1,12 +1,15 @@
 export class LoginResult {
   username: string;
-    userId: string;
-    mobile?: string | null;
-    Token: string;
-    constructor() {
-      this.Token = '';
-      this.mobile = null,
-      this.username = '';
-      this.userId = '';
-    }
+  firstname: string;
+  lastname: string;
+  userId: string;
+  token: string;
+  constructor() {
+    this.token = '';
+    this.username = '';
+    this.firstname = '';
+    this.lastname = '';
+
+    this.userId = '';
   }
+}

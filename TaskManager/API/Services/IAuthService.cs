@@ -11,7 +11,7 @@ namespace API.Services
     public interface IAuthService
     {
         Task<(int, string)> Registeration(RegistrationModel model);
-        Task<(int, string)> Login(LoginModel model);
+        Task<LoginResult> Login(LoginModel model);
         Task<(int, string)> ChangePassword(ChangePasswordModel model);
         Task<(int, string)> UpdateProfile(UpdateProfileModel model, string userId);
 
@@ -52,14 +52,14 @@ namespace API.Services
             return (1, "User created successfully!");
         }
 
-        public async Task<(int, string)> Login(LoginModel model)
+        public async Task<LoginResult> Login(LoginModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user == null)
-                return (0, "Invalid username");
+                throw new Exception("Invalid username");
 
             if (!await userManager.CheckPasswordAsync(user, model.Password))
-                return (0, "Invalid password");
+                    throw new Exception("Invalid password");
                         
             var authClaims = new List<Claim>
             {
@@ -67,8 +67,17 @@ namespace API.Services
                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
             string token = GenerateToken(authClaims);
-            return (1, token);
-        }        
+
+
+            var res = new LoginResult();
+            res.token = token;
+            res.userId = user.Id;
+            res.username = user.UserName;
+            res.firstname = user.FirstName;
+            res.lastname = user.LastName;
+
+            return (res);
+        }       
 
         public async Task<(int, string)> ChangePassword(ChangePasswordModel model)
         {

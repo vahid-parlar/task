@@ -1,0 +1,84 @@
+﻿using API.Services;
+using DAL.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace API.Controllers
+{
+    [ApiController]
+    [Route("api")]
+    public class UserController : ControllerBase
+    {
+        private readonly IAuthService _authService;
+        public UserController(IAuthService authService)
+        {
+           _authService = authService;
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegistrationModel model)
+        {
+            var (status, message) =await _authService.Registeration(model);
+
+            if (status==1)
+            {
+                return Ok(message);
+            }else 
+            {
+                return BadRequest(message);
+            }
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            var (status, message) =await _authService.Login(model);
+
+            if (status==1)
+            {
+                return Ok(message);
+            }else 
+            {
+                return BadRequest(message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut("users/password")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
+        {
+            var (status, message) =await _authService.ChangePassword(model);
+
+            if (status==1)
+            {
+                return Ok(message);
+            }else 
+            {
+                return BadRequest(message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut("users/profile")]
+        public async Task<IActionResult> UpdateProfile(UpdateProfileModel model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("Invalid token");
+            }
+            var (status, message) =await _authService.UpdateProfile(model, userId);
+
+            if (status==1)
+            {
+                return Ok(message);
+            }
+            else 
+            {
+                return BadRequest(message);
+            }
+        }
+    }
+}

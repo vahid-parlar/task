@@ -5,6 +5,13 @@ import { Project } from '@models/project';
 import { MaterialModule } from '@modules/Material.module';
 import { ProjectService } from '@services/projects.service';
 import { take } from 'rxjs';
+import { JalaliMomentDateAdapter } from '@components/shared/jalali-moment-date-adapter/jalali-moment-date-adapter.component';
+import jmoment, { Moment } from 'jalali-moment';
+import {
+  DateFilterFn,
+  MatDatepickerInputEvent,
+} from '@angular/material/datepicker';
+import moment from 'jalali-moment';
 
 @Component({
   selector: 'add-project',
@@ -14,24 +21,66 @@ import { take } from 'rxjs';
   styleUrl: './add.component.scss',
 })
 export class AddProjectComponent implements OnInit {
+  adapter: JalaliMomentDateAdapter;
+  startDate = jmoment('2017-01-01', 'YYYY-MM-DD');
+  minDate = jmoment('2017-10-02', 'YYYY-MM-DD');
+  maxDate = jmoment('1396-07-29', 'jYYYY-jMM-jDD');
+  jsonDate = '2017-10-19T12:19:48.817';
+  jalaliMomentControl = (initialValue?: Moment) =>
+    this.builder.control(initialValue || moment(), Validators.required);
+
   constructor(
     private builder: FormBuilder,
     private projectService: ProjectService,
     private activatedRouter: ActivatedRoute
-  ) {}
-  ngOnInit(): void {
-    // this._loadProject();
+  ) {
+    this.adapter = new JalaliMomentDateAdapter();
   }
-  public pageTitle: string = 'Add Project';
+  ngOnInit(): void {}
+  public pageTitle: string = 'افزودن پروژه جدید';
   public id: string | null = null;
-
   projectForm = this.builder.group({
     title: this.builder.control('', Validators.required),
     description: this.builder.control('', Validators.required),
-    startDate: this.builder.control(new Date(), Validators.required),
-    endDate: this.builder.control(new Date(), Validators.required),
+    startDate: this.jalaliMomentControl(),
+    endDate: this.jalaliMomentControl(),
   });
 
+  SaveProject() {
+    if (this.projectForm.valid) {
+      const project: Project = {
+        Title: this.projectForm.value.title as string,
+        Description: this.projectForm.value.description as string,
+        StartDate: this.projectForm.value.startDate as Moment,
+        EndDate: this.projectForm.value.endDate as Moment,
+      };
+      console.log(project);
+      // if (this.id == null) {
+      this.projectService.addProject(project).pipe(take(1)).subscribe();
+      // } else {
+      //   project.id = this.id;
+      //   this.projectService.updateProject(project).pipe(take(1)).subscribe();
+      // }
+    }
+  }
+  dateFilters: DateFilterFn<Moment | null> = (date: Moment | null) => {
+    if (date != null) {
+      const day: number = date.day();
+      if (day === 5) {
+        return false;
+      }
+      return date.isValid(); // Example filter
+    } else {
+      return false;
+    }
+  };
+
+  onChange(event: MatDatepickerInputEvent<jmoment.Moment>) {
+    console.log('onevent: ', event.value);
+  }
+  // onInput(event: MatDatepickerInputEvent<jmoment.Moment>) {
+  //   console.log('onInput: ', event.value);
+  // }
   // private _loadProject() {
   //   this.id = this.activatedRouter.snapshot.paramMap.get('id') as string;
   //   if (this.id != null && this.id != '') {
@@ -52,21 +101,4 @@ export class AddProjectComponent implements OnInit {
   //       .subscribe();
   //   }
   // }
-
-  SaveProject() {
-    if (this.projectForm.valid) {
-      const project: Project = {
-        Title: this.projectForm.value.title as string,
-        Description: this.projectForm.value.description as string,
-        StartDate: this.projectForm.value.startDate as Date,
-        EndDate: this.projectForm.value.endDate as Date,
-      };
-      // if (this.id == null) {
-        this.projectService.addProject(project).pipe(take(1)).subscribe();
-      // } else {
-      //   project.id = this.id;
-      //   this.projectService.updateProject(project).pipe(take(1)).subscribe();
-      // }
-    }
-  }
 }

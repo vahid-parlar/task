@@ -10,6 +10,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { JalaliMomentDateAdapter } from '@components/shared/jalali-moment-date-adapter/jalali-moment-date-adapter.component';
+import { JALALI_MOMENT_FORMATS } from '@components/shared/jalali-moment-date-adapter/jalali_moment_formats';
 
 @NgModule({
   exports: [
@@ -23,7 +27,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule 
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: JalaliMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: JALALI_MOMENT_FORMATS },
   ]
 })
 export class MaterialModule {}

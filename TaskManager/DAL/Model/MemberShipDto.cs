@@ -11,9 +11,7 @@ namespace DAL.Model
     {
         public long ProjectId { get; set; }
 
-        public string UserName { get; set; }
-
-        public long ProjectRoleId { get; set; }
+        public string UserId { get; set; }
 
         public DateTime FromDate { get; set; }
 

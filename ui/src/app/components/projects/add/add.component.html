@@ -30,7 +30,7 @@
       </p>
       <p>
         <mat-form-field class="w-1/2">
-          <mat-label>تاریخ شروع</mat-label>
+          <mat-label>تاریخ شروع پروژه</mat-label>
           <input
             class="pr-5"
             matInput
@@ -38,7 +38,7 @@
             (dateChange)="onChange($event)"
             [matDatepickerFilter]="dateFilters"
             formControlName="startDate"
-            placeholder="تاریخ شروع"
+            placeholder="تاریخ شروع پروژه"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -49,7 +49,7 @@
       </p>
       <p>
         <mat-form-field class="w-1/2">
-          <mat-label>تاریخ پایان</mat-label>
+          <mat-label>تاریخ پایان پروژه</mat-label>
           <input
             class="pr-5"
             matInput
@@ -57,7 +57,7 @@
             (dateChange)="onChange($event)"
             [matDatepickerFilter]="dateFilters"
             formControlName="endDate"
-            placeholder="تاریخ پایان"
+            placeholder="تاریخ پایان پروژه"
           />
           <mat-datepicker-toggle
             matSuffix

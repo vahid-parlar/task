@@ -14,6 +14,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { JalaliMomentDateAdapter } from '@components/shared/jalali-moment-date-adapter/jalali-moment-date-adapter.component';
 import { JALALI_MOMENT_FORMATS } from '@components/shared/jalali-moment-date-adapter/jalali_moment_formats';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   exports: [
@@ -29,7 +31,9 @@ import { JALALI_MOMENT_FORMATS } from '@components/shared/jalali-moment-date-ada
     MatIconModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule ,
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [
     { provide: DateAdapter, useClass: JalaliMomentDateAdapter, deps: [MAT_DATE_LOCALE] },

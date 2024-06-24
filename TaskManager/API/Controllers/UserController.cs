@@ -11,9 +11,12 @@ namespace API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IAuthService _authService;
-        public UserController(IAuthService authService)
+        private readonly IUserService _userService;
+
+        public UserController(IAuthService authService, IUserService userService)
         {
-           _authService = authService;
+            _authService = authService;
+            _userService = userService;
         }
 
         [HttpPost("register")]
@@ -78,6 +81,20 @@ namespace API.Controllers
             else 
             {
                 return BadRequest(message);
+            }
+        }
+        [Authorize]
+        [HttpGet("users")]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                List<UserResult> result = await _userService.GetUsers();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

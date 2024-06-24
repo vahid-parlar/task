@@ -90,6 +90,7 @@ builder.Services.AddCors(options =>
 
 // register services
 builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ITaskManagerService, TaskManagerService>();
 var app = builder.Build();

@@ -35,6 +35,12 @@
               "node_modules/ngx-toastr/toastr.css"
 
             ],
+            "allowedCommonJsDependencies": [
+              "moment-jalaali",
+              "jquery",
+              "jalali-moment",
+              "lodash"
+            ],
             "scripts": []
           },
           "configurations": {

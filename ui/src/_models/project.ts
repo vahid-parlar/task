@@ -1,13 +1,13 @@
 import { Moment } from "jalali-moment";
 
 export class Project {
-  Id?: string | null;
-  Title: string;
-  Description: string;
-  StartDate?: Moment;
-  EndDate?: Moment;
+  id?: number | null;
+  title: string;
+  description: string;
+  startDate?: Moment;
+  endDate?: Moment;
   constructor() {
-    this.Description = "";
-    this.Title = "";
+    this.description = "";
+    this.title = "";
   }
 }

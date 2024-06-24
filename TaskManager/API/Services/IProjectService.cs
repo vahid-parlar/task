@@ -65,7 +65,7 @@ namespace API.Services
 
         public async Task AddProjectMember(MemberShipDto dto, string loginedUserId)
         {
-            var user = await userManager.FindByNameAsync(dto.UserName);
+            var user = await userManager.FindByIdAsync(dto.UserId);
             if (user == null)
             {
                 throw new Exception("Inserted userName not found!");
@@ -80,7 +80,7 @@ namespace API.Services
             {
                 ProjectId = dto.ProjectId,
                 FromDate = dto.FromDate,
-                ProjectRoleId = dto.ProjectRoleId,
+                ProjectRoleId = 2,
                 IsDelete = false,
                 ToDate = dto.ToDate,
                 ApplicationUserId = user.Id
@@ -103,7 +103,7 @@ namespace API.Services
             var projectMember = new ProjectMember
             {
                 FromDate = DateTime.Now,
-                ProjectRoleId = 2,
+                ProjectRoleId = 1,
                 IsDelete = false,
                 ToDate = null,
                 ApplicationUserId = userId

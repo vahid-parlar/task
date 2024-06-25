@@ -17,13 +17,21 @@
             جدید
           </button>
           @if(selectedRowIndex !== -1){
-            <button
+          <button
             mat-raised-button
             (click)="onAddNewMember()"
             class="ml-5"
             color="primary"
           >
             افزودن عضو جدید
+          </button>
+          <button
+            mat-raised-button
+            (click)="onAddNewTask()"
+            class="ml-5"
+            color="primary"
+          >
+            افزودن تسک جدید
           </button>
           }
         </div>
@@ -45,7 +53,7 @@
           <th mat-sort-header mat-header-cell class="p-0" *matHeaderCellDef>
             {{ innerColumn }}
           </th>
-          <th mat-cell *matCellDef="let element;let index = index">
+          <th mat-cell *matCellDef="let element; let index = index">
             @if(innerColumn === 'startDate' || innerColumn ==='endDate'){
             <ng-container>
               {{ element[innerColumn] | jalaali : "jYYYY/jMM/jDD" }}
@@ -66,7 +74,7 @@
           mat-row
           (click)="highlight(index)"
           [ngClass]="{ highlightTableColor: selectedRowIndex == index }"
-          *matRowDef="let row;let index = index; columns: displayColumns"
+          *matRowDef="let row; let index = index; columns: displayColumns"
         ></tr>
       </table>
     </mat-card-content>

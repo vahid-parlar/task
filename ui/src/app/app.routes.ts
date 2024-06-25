@@ -27,6 +27,14 @@ export const routes: Routes = [
             (c) => c.AddProjectComponent
           ),
       },
+      {
+        canActivate: [AuthGuard],
+        path: 'add-task/:projectId',
+        loadComponent: () =>
+          import('./components/tasks/add/add.component').then(
+            (c) => c.AddTaskComponent
+          ),
+      },
     ],
   },
   {

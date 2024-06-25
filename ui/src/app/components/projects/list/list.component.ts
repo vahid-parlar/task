@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProjectResult } from '@models/project-result';
 import { MaterialModule } from '@modules/Material.module';
 import { ProjectService } from '@services/projects.service';
@@ -11,9 +11,7 @@ import { JalaaliPipe } from 'app/shared/jalaali.pipe';
 import { plainToClass } from 'class-transformer';
 import { forkJoin, map, take } from 'rxjs';
 import { AddMemberComponent } from './member/addMember';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '@services/users.service';
 import { User } from '@models/user';
 @Component({
@@ -39,43 +37,56 @@ export class ProjectListComponent implements OnInit {
   selectedRowIndex: number = -1;
   readonly dialog = inject(MatDialog);
 
-  constructor(private projectService: ProjectService, private userService: UserService) {}
+  constructor(
+    private projectService: ProjectService,
+    private userService: UserService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.loadInitData();
   }
-  
+
   private loadInitData() {
     forkJoin([
-      this.projectService.getProjects().pipe(take(1), map(projects => plainToClass(ProjectResult, projects))),
-      this.userService.getUsers().pipe(take(1), map(res => res))
-    ])
-    .subscribe(([projects, users]) => {
+      this.projectService.getProjects().pipe(
+        take(1),
+        map((projects) => plainToClass(ProjectResult, projects))
+      ),
+      this.userService.getUsers().pipe(
+        take(1),
+        map((res) => res)
+      ),
+    ]).subscribe(([projects, users]) => {
       this.projectDate = projects;
       this.dataSource = new MatTableDataSource(projects);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.userList = users;
     });
-
   }
   highlight(index: number) {
     this.selectedRowIndex = index;
   }
-  onAddNewMember(){
-    console.log(this.userList )
+  onAddNewMember() {
+    console.log(this.userList);
 
     var project = this.projectDate[this.selectedRowIndex];
     const dialogRef = this.dialog.open(AddMemberComponent, {
-      data: {projectTitle: project.title, projectId:project.id, userList:this.userList},
-      height:"600px",
-      width:"600px"
+      data: {
+        projectTitle: project.title,
+        projectId: project.id,
+        userList: this.userList,
+      },
+      height: '600px',
+      width: '600px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      // if (result !== undefined) {
-      //   this.animal.set(result);
-      // }
     });
+  }
+  onAddNewTask() {
+    var project = this.projectDate[this.selectedRowIndex];
+    this.router.navigate([`add-task/${project.id}`]);
   }
 }

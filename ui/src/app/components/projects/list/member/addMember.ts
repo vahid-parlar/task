@@ -76,7 +76,6 @@ export interface DialogData {
           </mat-form-field>
         </p>
         <p>
-          <!-- dropdown -->
           <mat-form-field class="w-full">
             <mat-label>نام کاربر</mat-label>
             <mat-select formControlName="userId">

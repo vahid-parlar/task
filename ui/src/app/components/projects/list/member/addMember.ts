@@ -59,7 +59,7 @@ export interface DialogData {
 
   template: `
     <h2 mat-dialog-title style="direction: rtl;">
-      <h2 class="font-vazir">افزودن عضو جدید</h2>
+      <h2 >افزودن عضو جدید</h2>
     </h2>
     <mat-dialog-content>
       <form [formGroup]="memberForm" style="direction: rtl; box-shadow: none">

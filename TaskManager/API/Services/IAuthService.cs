@@ -75,6 +75,7 @@ namespace API.Services
             res.username = user.UserName;
             res.firstname = user.FirstName;
             res.lastname = user.LastName;
+            res.mobile = user.Mobile;
 
             return (res);
         }       

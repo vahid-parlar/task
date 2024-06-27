@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginInput } from '@models/login-input';
 import { LoginResult } from '@models/login-result';
+import { PasswordInput } from '@models/password-input';
+import { ProfileInput } from '@models/profile-input';
 import { RegisterInput } from '@models/register-input';
 import { User } from '@models/user';
 import { Utility } from 'app/shared/utility';
@@ -33,5 +35,11 @@ export class UserService {
   }
   register(registerInput: RegisterInput) {
     return this.http.post<any>(`${Utility.serverUrl}/register`,registerInput);
+  }
+  changePassword(passwordInput: PasswordInput) {
+    return this.http.put<any>(`${Utility.serverUrl}/users/password`,passwordInput);
+  }
+  changeProfileInfo(profileInput: ProfileInput) {
+    return this.http.put<any>(`${Utility.serverUrl}/users/profile`,profileInput);
   }
 }

@@ -55,7 +55,7 @@ namespace API.Controllers
 
             if (status==1)
             {
-                return Ok(message);
+                return Ok();
             }else 
             {
                 return BadRequest(message);
@@ -76,7 +76,7 @@ namespace API.Controllers
 
             if (status==1)
             {
-                return Ok(message);
+                return Ok();
             }
             else 
             {

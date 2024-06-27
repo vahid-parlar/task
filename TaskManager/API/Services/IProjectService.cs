@@ -12,7 +12,7 @@ namespace API.Services
         Task CreateProject(ProjectDto dto, string userId);
         Task<List<ProjectMembersResult>> GetProjectMembers(long id, string loginedUserId);
         Task<List<ProjectRolePermission>> GetProjectRolesWithPermissions(string userId);
-        Task<List<ProjectResult>> GetProjects();
+        Task<List<ProjectResult>> GetProjects(string loginedUserId);
         Task<List<RolsList>> GetRols();
         Task<bool> HasPermission(string userId, long projectId, string methodName);
     }
@@ -87,7 +87,7 @@ namespace API.Services
             };
 
             await _db.ProjectMembers.AddAsync(projectMember);
-            //await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
 
         public async Task CreateProject(ProjectDto dto, string userId)
@@ -144,16 +144,22 @@ namespace API.Services
                 }).ToListAsync();
         }
 
-        public async Task<List<ProjectResult>> GetProjects()
+        public async Task<List<ProjectResult>> GetProjects(string loginedUserId)
         {
-            return await _db.Projects.Select(c => new ProjectResult
-            {
-                Id = c.Id,
-                Description = c.Description,
-                EndDate = c.EndDate,
-                StartDate = c.StartDate,
-                Title = c.Title
-            }).ToListAsync();
+            var projects = _db.Projects
+                .Include(c => c.ProjectMembers)
+                .Include(c => c.ProjectMembers).ThenInclude(c => c.ProjectRole)
+                .Where(p => p.ProjectMembers
+                .Any(pm => pm.ApplicationUserId == loginedUserId))
+                .Select(c => new ProjectResult
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    EndDate = c.EndDate,
+                    StartDate = c.StartDate,
+                    Title = c.Title
+                });
+            return await projects.ToListAsync();
         }
 
         public async Task<List<RolsList>> GetRols()

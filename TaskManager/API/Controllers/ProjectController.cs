@@ -71,7 +71,8 @@ namespace API.Controllers
         {
             try
             {
-                List<ProjectResult> result=  await _projectService.GetProjects();
+                var loginedUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                List<ProjectResult> result=  await _projectService.GetProjects(loginedUserId);
                 return Ok(result);
             }
             catch (Exception ex)

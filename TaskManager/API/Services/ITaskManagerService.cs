@@ -143,7 +143,8 @@ namespace API.Services
                 Priority = c.Priority,
                 ProjectId= c.ProjectId,
                 Title=c.Title,
-                TaskStatuses= c.TaskStatuses.OrderBy(s=>s.Time).Select(v=>v.Status).ToList()
+                ProjectTitle = c.Project.Title,
+                TaskStatus = c.TaskStatuses.OrderByDescending(s => s.Id).Select(v=>v.Status).FirstOrDefault()
                 
             }).AsQueryable();
 
@@ -165,7 +166,7 @@ namespace API.Services
             }
             if (dto.TaskStatus != null)
             {
-                query = query.Where(c => c.TaskStatuses.Contains(dto.TaskStatus.Value));
+                query = query.Where(c => c.TaskStatus == dto.TaskStatus);
             }
 
             if (dto.SortType==TaskSortType.Priority)

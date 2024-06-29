@@ -11,7 +11,9 @@ INSERT INTO RolePermissions (Id,Action,ProjectRoleId)
 	(2,N'CreateTask',1),
 	(3,N'CreateTask',2),
 	(4,N'AssignTask',1),
-	(5,N'AssignTask',2)
+	(5,N'AssignTask',2),
+	(6,N'ChangeTaskStatuses',1),
+	(7,N'ChangeTaskStatuses',2)
 	;
 SET IDENTITY_INSERT RolePermissions OFF
 

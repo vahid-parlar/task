@@ -35,6 +35,15 @@ export const routes: Routes = [
             (c) => c.AddTaskComponent
           ),
       },
+
+      {
+        canActivate: [AuthGuard],
+        path: 'task-list',
+        loadComponent: () =>
+          import('./components/tasks/list/list.component').then(
+            (c) => c.TaskListComponent
+          ),
+      },
     ],
   },
   {

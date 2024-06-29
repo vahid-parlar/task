@@ -20,8 +20,10 @@ namespace DAL.Model
         public DateTime? DeadLine { get; set; }
 
         public long? ProjectId { get; set; }
+        public string? ProjectTitle { get; set; }
 
-        public List<Status>? TaskStatuses { get; set; }
+
+        public Status? TaskStatus { get; set; }
 
     }
 }

@@ -219,3 +219,13 @@ C:\Users\jalal\Desktop\New folder\task\TaskManager\API\obj\Debug\net6.0\refint\A
 C:\Users\jalal\Desktop\New folder\task\TaskManager\API\obj\Debug\net6.0\API.pdb
 C:\Users\jalal\Desktop\New folder\task\TaskManager\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\jalal\Desktop\New folder\task\TaskManager\API\obj\Debug\net6.0\ref\API.dll
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.csproj.AssemblyReference.cache
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.AssemblyInfoInputs.cache
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.AssemblyInfo.cs
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.csproj.CoreCompileInputs.cache
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.dll
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\refint\API.dll
+C:\Users\jalal\Desktop\vahid\task\TaskManager\API\obj\Debug\net6.0\API.pdb
